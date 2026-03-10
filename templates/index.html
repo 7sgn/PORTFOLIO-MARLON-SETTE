@@ -20,8 +20,8 @@
 </head>
 <body>
 
-    <!-- Particle Background -->
-    <div class="hero-particles" id="particles"></div>
+    <!-- Matrix Background -->
+    <canvas id="matrix-canvas" class="matrix-bg"></canvas>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -53,7 +53,7 @@
                 </h2>
                 <p class="hero-description animate-on-scroll">
                     Arquiteto de sistemas focado em <strong>Automação</strong> e <strong>Desenvolvimento Full Stack</strong>. 
-                    Transformando desafios técnicos em soluções eficientes e lucrativas.
+                    Transformando desafios técnicos em soluções eficientes e modernas.
                 </p>
                 <div class="hero-buttons animate-on-scroll">
                     <a href="#portfolio" class="btn btn-hero-primary"><i class="fas fa-rocket"></i> Ver Projetos</a>
@@ -62,7 +62,7 @@
             </div>
             <div class="hero-image animate-on-scroll">
                 <div class="hero-avatar">
-                    <img src="{{ url_for('static', filename='img/perfil.jpeg') }}" alt="Marlon Sette" class="avatar-img">
+                    <img src="{{ url_for('static', filename='img/foto.png') }}" alt="Marlon Sette" class="avatar-img">
                     <div class="avatar-ring"></div>
                 </div>
             </div>
@@ -74,22 +74,18 @@
 
     <!-- About Section -->
     <section class="section" id="sobre">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll"><span class="section-number">01.</span> Sobre Mim</h2>
-            <div class="sobre-grid">
-                <!-- Texto à Esquerda -->
-                <div class="sobre-text animate-on-scroll">
-                    <p>Profissional de tecnologia com sólida base em arquitetura de software e infraestrutura. Minha carreira é pautada pela busca incessante da eficiência, utilizando tecnologias modernas para automatizar fluxos complexos e criar produtos digitais de alta performance.</p>
-                    <p>Minha especialidade é integrar o ecossistema <strong>React/Next.js</strong> com backends poderosos em <strong>Python</strong> e orquestrações avançadas via <strong>N8N</strong>.</p>
-                    <p>Com vasta experiência em suporte N2 e troubleshooting, possuo a visão completa de ciclo de vida de um software, desde o desenvolvimento até a sustentação em produção.</p>
-                </div>
-                <!-- Card à Direita -->
-                <div class="sobre-info animate-on-scroll">
-                    <div class="glass-card info-card">
-                        <div class="info-item"><i class="fas fa-map-marker-alt"></i><div><strong>Localização</strong><span>Brasília, DF - Brasil</span></div></div>
-                        <div class="info-item"><i class="fas fa-envelope"></i><div><strong>Email</strong><span>sette562@gmail.com</span></div></div>
-                        <div class="info-item"><i class="fas fa-check-circle"></i><div><strong>Status</strong><span>Disponível para Projetos</span></div></div>
-                    </div>
+        <div class="container about-me-exclusive-wrapper">
+            <div class="about-me-text-side animate-on-scroll">
+                <h2 class="section-title" style="text-align: left;"><span class="section-number">01.</span> Sobre Mim</h2>
+                <p>Profissional de tecnologia com sólida base em arquitetura de software e infraestrutura. Minha carreira é pautada pela busca incessante da eficiência, utilizando tecnologias modernas para automatizar fluxos complexos e criar produtos digitais de alta performance.</p>
+                <p>Minha especialidade é integrar o ecossistema <strong>React/Next.js</strong> com backends poderosos em <strong>Python</strong> e orquestrações avançadas via <strong>N8N</strong>.</p>
+                <p>Com vasta experiência em suporte N2 e troubleshooting, possuo a visão completa de ciclo de vida de um software, desde o desenvolvimento até a sustentação em produção.</p>
+            </div>
+            <div class="about-me-card-side animate-on-scroll">
+                <div class="glass-card info-card">
+                    <div class="info-item"><i class="fas fa-map-marker-alt"></i><div><strong>Localização</strong><span>Brasília, DF - Brasil</span></div></div>
+                    <div class="info-item"><i class="fas fa-envelope"></i><div><strong>Email</strong><span>sette562@gmail.com</span></div></div>
+                    <div class="info-item"><i class="fas fa-check-circle"></i><div><strong>Status</strong><span>Disponível para Projetos</span></div></div>
                 </div>
             </div>
         </div>
@@ -128,7 +124,7 @@
                         <ul class="timeline-details">
                             <li>Desenvolvimento de ecossistemas web com foco em escalabilidade e UI/UX.</li>
                             <li>Integração de APIs RESTful e modelagem de bancos de dados SQL Server.</li>
-                            <li>Manutenção de plataformas corporativas e otimização de performance.</li>
+                        <li>Manutenção de plataformas corporativas e otimização de performance.</li>
                         </ul>
                         <div class="timeline-tags"><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">SQL Server</span><span class="tag">Next.js</span></div>
                     </div>
@@ -154,12 +150,11 @@
         </div>
     </section>
 
-    <!-- Formation Section (4 COLUMNS RESTORED) -->
+    <!-- Formation Section -->
     <section class="section" id="formacao">
         <div class="container">
             <h2 class="section-title animate-on-scroll"><span class="section-number">03.</span> Formação & Certificações</h2>
             <div class="formacao-grid">
-                <!-- Coluna 1 -->
                 <div class="glass-card formacao-card animate-on-scroll">
                     <div class="formacao-icon"><i class="fas fa-graduation-cap"></i></div>
                     <div class="formacao-info">
@@ -168,7 +163,6 @@
                         <p class="formacao-periodo">2022 - 2024</p>
                     </div>
                 </div>
-                <!-- Coluna 2 -->
                 <div class="glass-card formacao-card animate-on-scroll">
                     <div class="formacao-icon"><i class="fas fa-certificate"></i></div>
                     <div class="formacao-info">
@@ -177,7 +171,6 @@
                         <p class="formacao-periodo">2024 - 2026</p>
                     </div>
                 </div>
-                <!-- Coluna 3 -->
                 <div class="glass-card formacao-card animate-on-scroll">
                     <div class="formacao-icon"><i class="fas fa-robot"></i></div>
                     <div class="formacao-info">
@@ -186,7 +179,6 @@
                         <p class="formacao-periodo">2024</p>
                     </div>
                 </div>
-                <!-- Coluna 4 -->
                 <div class="glass-card formacao-card animate-on-scroll">
                     <div class="formacao-icon"><i class="fas fa-code"></i></div>
                     <div class="formacao-info">
@@ -310,7 +302,7 @@
 
     </main>
 
-    <footer class="footer">
+    <footer class="footer no-print">
         <div class="container">
             <p>&copy; 2026 Marlon Sette. Todos os direitos reservados.</p>
         </div>
