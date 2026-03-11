@@ -3,31 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio Profissional - Marlon Sette | Desenvolvedor Full Stack & Especialista em Automação">
-    <title>Marlon Sette | Curriculum Vitae</title>
+    <meta name="description" content="Currículo Digital - Marlon Sette | Desenvolvedor & Profissional de TI">
+    <title>Marlon Sette | Currículo Digital</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/favicon.svg') }}">
 
-    <!-- Icons & Fonts -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Custom Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-    <!-- Matrix Background -->
-    <canvas id="matrix-canvas" class="matrix-bg"></canvas>
+    <!-- Fundo de Partículas Global -->
+    <div class="hero-particles" id="particles"></div>
 
-    <!-- Navigation -->
+    <!-- ========== NAVBAR ========== -->
     <nav class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="#hero" class="nav-logo">&lt;Marlon Sette/&gt;</a>
-            <ul class="nav-menu">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>MS<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#sobre" class="nav-link">Sobre</a></li>
                 <li><a href="#experiencia" class="nav-link">Experiência</a></li>
                 <li><a href="#formacao" class="nav-link">Formação</a></li>
@@ -36,263 +38,542 @@
                 <li><a href="#contato" class="nav-link">Contato</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="btn-theme" id="btn-theme"><i class="fas fa-moon"></i></button>
-                <button class="btn-pdf" id="btn-pdf"><i class="fas fa-file-pdf"></i> PDF</button>
+                <button class="btn-theme" id="btn-theme" aria-label="Alternar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="btn-pdf" id="btn-pdf" aria-label="Baixar PDF">
+                    <i class="fas fa-download"></i>
+                    <span>PDF</span>
+                </button>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- ========== HERO (Site) ========== -->
     <section class="hero no-print" id="hero">
-        <div class="container hero-content">
+        <div class="hero-content">
             <div class="hero-text">
-                <p class="hero-greeting animate-on-scroll">Olá, seja bem-vindo ao meu portfolio. Eu sou</p>
+                <p class="hero-greeting animate-on-scroll">Olá, eu sou</p>
                 <h1 class="hero-name animate-on-scroll">Marlon Sette</h1>
                 <h2 class="hero-title animate-on-scroll">
-                    <span id="typed-text"></span><span class="typed-cursor">|</span>
+                    <span class="typed-text" id="typed-text"></span>
+                    <span class="typed-cursor">|</span>
                 </h2>
                 <p class="hero-description animate-on-scroll">
-                    Arquiteto de sistemas focado em <strong>Automação</strong> e <strong>Desenvolvimento Full Stack</strong>. 
-                    Transformando desafios técnicos em soluções eficientes e modernas.
+                    Profissional apaixonado por tecnologia, inovação e soluções criativas.
+                    Transformando ideias em projetos que fazem a diferença.
                 </p>
                 <div class="hero-buttons animate-on-scroll">
-                    <a href="#portfolio" class="btn btn-hero-primary"><i class="fas fa-rocket"></i> Ver Projetos</a>
-                    <a href="#contato" class="btn btn-hero-outline"><i class="fas fa-envelope"></i> Contato</a>
+                    <a href="#portfolio" class="btn btn-primary">
+                        <i class="fas fa-briefcase"></i> Ver Portfólio
+                    </a>
+                    <a href="#contato" class="btn btn-outline">
+                        <i class="fas fa-envelope"></i> Contato
+                    </a>
                 </div>
             </div>
             <div class="hero-image animate-on-scroll">
                 <div class="hero-avatar">
-                    <img src="{{ url_for('static', filename='img/foto.png') }}" alt="Marlon Sette" class="avatar-img">
+                    <img src="{{ url_for('static', filename='img/perfil.jpeg') }}" alt="Marlon Sette" class="avatar-img">
                     <div class="avatar-ring"></div>
+                    <div class="avatar-dots">
+                        <span></span><span></span><span></span><span></span>
+                    </div>
                 </div>
             </div>
         </div>
-        <a href="#sobre" class="scroll-indicator"><i class="fas fa-chevron-down"></i></a>
+        <a href="#sobre" class="scroll-indicator" aria-label="Rolar para baixo">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </section>
 
+    <!-- Conteúdo principal para PDF -->
     <main id="cv-content">
 
-    <!-- About Section -->
-    <section class="section" id="sobre">
-        <div class="container about-me-exclusive-wrapper">
-            <div class="about-me-text-side animate-on-scroll">
-                <h2 class="section-title" style="text-align: left;"><span class="section-number">01.</span> Sobre Mim</h2>
-                <p>Profissional de tecnologia com sólida base em arquitetura de software e infraestrutura. Minha carreira é pautada pela busca incessante da eficiência, utilizando tecnologias modernas para automatizar fluxos complexos e criar produtos digitais de alta performance.</p>
-                <p>Minha especialidade é integrar o ecossistema <strong>React/Next.js</strong> com backends poderosos em <strong>Python</strong> e orquestrações avançadas via <strong>N8N</strong>.</p>
-                <p>Com vasta experiência em suporte N2 e troubleshooting, possuo a visão completa de ciclo de vida de um software, desde o desenvolvimento até a sustentação em produção.</p>
+    <!-- ========== HERO (PDF Only - Compacto) ========== -->
+    <section class="hero hero-pdf-only" style="display: none;">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="hero-greeting">Olá, eu sou</p>
+                <h1 class="hero-name">Marlon Sette</h1>
+                <h2 class="hero-title">Desenvolvedor Web | Analista de Sistemas</h2>
+                <p class="hero-description">
+                    Profissional de tecnologia com foco em soluções eficientes e modernas.
+                    Experiência em desenvolvimento full-stack e gestão de processos digitais.
+                </p>
             </div>
-            <div class="about-me-card-side animate-on-scroll">
-                <div class="glass-card info-card">
-                    <div class="info-item"><i class="fas fa-map-marker-alt"></i><div><strong>Localização</strong><span>Brasília, DF - Brasil</span></div></div>
-                    <div class="info-item"><i class="fas fa-envelope"></i><div><strong>Email</strong><span>sette562@gmail.com</span></div></div>
-                    <div class="info-item"><i class="fas fa-check-circle"></i><div><strong>Status</strong><span>Disponível para Projetos</span></div></div>
+            <div class="hero-image">
+                <div class="hero-avatar">
+                    <img src="{{ url_for('static', filename='img/perfil.jpeg') }}" alt="Marlon Sette" class="avatar-img">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
+    <!-- ========== SOBRE ========== -->
+    <section class="section" id="sobre">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">
+                <span class="section-number">01.</span> Sobre Mim
+            </h2>
+            <div class="sobre-grid">
+                <div class="sobre-text animate-on-scroll">
+                    <p>
+                        Sou um profissional de tecnologia com experiência em desenvolvimento de
+                        sistemas, gestão de projetos e soluções digitais. Minha trajetória combina
+                        competências técnicas com visão estratégica, sempre buscando entregar
+                        resultados de alto impacto.
+                    </p>
+                    <p>
+                        Atualmente, trabalho no Governo do Distrito Federal, onde aplico tecnologia
+                        para modernizar processos e melhorar o atendimento ao cidadão. Sou movido
+                        pela curiosidade e pelo desejo constante de aprender e evoluir.
+                    </p>
+                </div>
+                <div class="sobre-info animate-on-scroll">
+                    <div class="info-card">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Localização</strong>
+                                <span>Brasília, DF - Brasil</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>E-mail</strong>
+                                <span>sette562@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-briefcase"></i>
+                            <div>
+                                <strong>Disponibilidade</strong>
+                                <span>Aberto a propostas</span>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-language"></i>
+                            <div>
+                                <strong>Idiomas</strong>
+                                <span>Português (nativo), Inglês (intermediário)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== EXPERIÊNCIA ========== -->
     <section class="section section-alt" id="experiencia">
         <div class="container">
-            <h2 class="section-title animate-on-scroll"><span class="section-number">02.</span> Experiência Profissional</h2>
+            <h2 class="section-title animate-on-scroll">
+                <span class="section-number">02.</span> Experiência Profissional
+            </h2>
             <div class="timeline">
+                <!-- Item 1 -->
                 <div class="timeline-item animate-on-scroll">
                     <div class="timeline-dot"></div>
-                    <div class="glass-card timeline-content">
+                    <div class="timeline-content">
                         <div class="timeline-header">
                             <h3>Técnico de Suporte Pleno N2</h3>
-                            <span class="timeline-company">WYNTECH - SERVIÇOS DE INFORMÁTICA</span>
+                            <span class="timeline-company">
+                                <i class="fas fa-building"></i> WYNTECH - SERVIÇOS DE INFORMÁTICA
+                            </span>
                         </div>
-                        <span class="timeline-date">2025 - Presente</span>
+                        <span class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i> 2025 - Presente
+                        </span>
                         <ul class="timeline-details">
-                            <li>Liderança em resolução de incidentes de infraestrutura e redes críticas.</li>
-                            <li><strong>Automação Pro:</strong> Criação de workflows inteligentes no N8N integrados a scripts Python.</li>
-                            <li>Administração de ambientes Linux e servidores de produção.</li>
+                            <li>Desenvolvimento e manutenção de sistemas internos</li>
+                            <li>Modernização de processos com soluções digitais</li>
+                            <li>Suporte técnico e gestão de infraestrutura de TI</li>
+                            <li>Automação de fluxos de trabalho e relatórios</li>
                         </ul>
-                        <div class="timeline-tags"><span class="tag">N8N Expert</span><span class="tag">Python</span><span class="tag">Linux</span><span class="tag">Infra</span></div>
+                        <div class="timeline-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Suporte e Infraestrutura</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">N8N</span>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Item 2 -->
                 <div class="timeline-item animate-on-scroll">
                     <div class="timeline-dot"></div>
-                    <div class="glass-card timeline-content">
+                    <div class="timeline-content">
                         <div class="timeline-header">
                             <h3>Desenvolvedor Web</h3>
-                            <span class="timeline-company">Bionic Monkey</span>
+                            <span class="timeline-company">
+                                <i class="fas fa-building"></i> Empresa de Tecnologia Bionic Monkey
+                            </span>
                         </div>
-                        <span class="timeline-date">2021 - 2024</span>
+                        <span class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i> 2021 - 2024
+                        </span>
                         <ul class="timeline-details">
-                            <li>Desenvolvimento de ecossistemas web com foco em escalabilidade e UI/UX.</li>
-                            <li>Integração de APIs RESTful e modelagem de bancos de dados SQL Server.</li>
-                        <li>Manutenção de plataformas corporativas e otimização de performance.</li>
+                            <li>Desenvolvimento de aplicações web responsivas</li>
+                            <li>Integração com APIs e serviços externos</li>
+                            <li>Otimização de performance e SEO</li>
+                            <li>Colaboração com equipes multidisciplinares</li>
                         </ul>
-                        <div class="timeline-tags"><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">SQL Server</span><span class="tag">Next.js</span></div>
+                        <div class="timeline-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Wordpress</span>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Item 3 -->
                 <div class="timeline-item animate-on-scroll">
                     <div class="timeline-dot"></div>
-                    <div class="glass-card timeline-content">
+                    <div class="timeline-content">
                         <div class="timeline-header">
                             <h3>Estagiário de TI</h3>
-                            <span class="timeline-company">Sistema FIBRA - (SENAI)</span>
+                            <span class="timeline-company">
+                                <i class="fas fa-building"></i> Sistema FIBRA - (SENAI)
+                            </span>
                         </div>
-                        <span class="timeline-date">2021 - 2024</span>
+                        <span class="timeline-date">
+                            <i class="fas fa-calendar-alt"></i> 2021 - 2024
+                        </span>
                         <ul class="timeline-details">
-                            <li>Manutenção preventiva de hardware e suporte a redes locais LAN/WAN.</li>
-                            <li>Criação de ferramentas de automação interna via Shell Script e Python.</li>
-                            <li>Auxílio na gestão de backups e segurança da informação.</li>
+                            <li>Suporte técnico a usuários e infraestrutura</li>
+                            <li>Manutenção de redes e servidores</li>
+                            <li>Criação de scripts de automação</li>
                         </ul>
-                        <div class="timeline-tags"><span class="tag">Python</span><span class="tag">Shell Script</span><span class="tag">Redes</span></div>
+                        <div class="timeline-tags">
+                            <span class="tag">Linux</span>
+                            <span class="tag">Redes</span>
+                            <span class="tag">Python</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Formation Section -->
+    <!-- ========== FORMAÇÃO ========== -->
     <section class="section" id="formacao">
         <div class="container">
-            <h2 class="section-title animate-on-scroll"><span class="section-number">03.</span> Formação & Certificações</h2>
+            <h2 class="section-title animate-on-scroll">
+                <span class="section-number">03.</span> Formação Acadêmica
+            </h2>
             <div class="formacao-grid">
-                <div class="glass-card formacao-card animate-on-scroll">
-                    <div class="formacao-icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="formacao-card animate-on-scroll">
+                    <div class="formacao-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
                     <div class="formacao-info">
-                        <h3>ADS</h3>
-                        <p class="formacao-instituicao">Cruzeiro do Sul</p>
-                        <p class="formacao-periodo">2022 - 2024</p>
+                        <h3>Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
+                        <p class="formacao-instituicao">
+                            <i class="fas fa-university"></i> Cruzeiro do Sul </p>
+                        <p class="formacao-periodo">
+                            <i class="fas fa-calendar-alt"></i> 2022 - 2024
+                        </p>
+                        <p class="formacao-descricao">
+                            Formação abrangente em desenvolvimento de software, banco de dados,
+                            redes, gestão de projetos e fundamentos de computação.
+                        </p>
                     </div>
                 </div>
-                <div class="glass-card formacao-card animate-on-scroll">
-                    <div class="formacao-icon"><i class="fas fa-certificate"></i></div>
+
+                <div class="formacao-card animate-on-scroll">
+                    <div class="formacao-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
                     <div class="formacao-info">
-                        <h3>Pós Testes</h3>
-                        <p class="formacao-instituicao">Cruzeiro do Sul</p>
-                        <p class="formacao-periodo">2024 - 2026</p>
+                        <h3>Pós-Graduação em Testes de Software</h3>
+                        <p class="formacao-instituicao">
+                            <i class="fas fa-university"></i> Cruzeiro do Sul
+                        </p>
+                        <p class="formacao-periodo">
+                            <i class="fas fa-calendar-alt"></i> 2024 - 2026 | Trancado
+                        </p>
+                        <p class="formacao-descricao">
+                            Especialização em governança de TI, gestão de projetos ágeis,
+                            segurança da informação e testes de software.
+                        </p>
                     </div>
                 </div>
-                <div class="glass-card formacao-card animate-on-scroll">
-                    <div class="formacao-icon"><i class="fas fa-robot"></i></div>
-                    <div class="formacao-info">
-                        <h3>N8N Pro</h3>
-                        <p class="formacao-instituicao">Especialização</p>
-                        <p class="formacao-periodo">2024</p>
+
+                <div class="formacao-card animate-on-scroll">
+                    <div class="formacao-icon">
+                        <i class="fas fa-award"></i>
                     </div>
-                </div>
-                <div class="glass-card formacao-card animate-on-scroll">
-                    <div class="formacao-icon"><i class="fas fa-code"></i></div>
                     <div class="formacao-info">
-                        <h3>Full Stack</h3>
-                        <p class="formacao-instituicao">Web Developer</p>
-                        <p class="formacao-periodo">2023</p>
+                        <h3>Certificações e Cursos</h3>
+                        <p class="formacao-instituicao">
+                            <i class="fas fa-laptop-code"></i> Diversas plataformas
+                        </p>
+                        <p class="formacao-periodo">
+                            <i class="fas fa-calendar-alt"></i> Contínuo
+                        </p>
+                        <ul class="formacao-lista">
+                            <li>Python para Ciência de Dados</li>
+                            <li>Desenvolvimento Web Full Stack</li>
+                            <li>DevOps e Cloud Computing</li>
+                            <li>Metodologias Ágeis (Scrum)</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
+    <!-- ========== HABILIDADES ========== -->
     <section class="section section-alt" id="habilidades">
         <div class="container">
-            <h2 class="section-title animate-on-scroll"><span class="section-number">04.</span> Habilidades & Stacks</h2>
-            <div class="skills-container">
-                <div class="glass-card animate-on-scroll">
-                    <div class="skill-category-title"><i class="fas fa-desktop"></i> Frontend</div>
-                    <div class="skill-list">
-                        <span class="skill-badge">React.js</span><span class="skill-badge">Next.js</span>
-                        <span class="skill-badge">TypeScript</span><span class="skill-badge">Tailwind CSS</span>
-                        <span class="skill-badge">HTML5/CSS3</span>
+            <h2 class="section-title animate-on-scroll">
+                <span class="section-number">04.</span> Habilidades Técnicas
+            </h2>
+            <div class="skills-grid">
+                <!-- Linguagens -->
+                <div class="skills-category animate-on-scroll">
+                    <h3><i class="fas fa-code"></i> Linguagens</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Python</span><span>90%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>JavaScript</span><span>85%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>HTML/CSS</span><span>95%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="95"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>SQL</span><span>70%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
                     </div>
                 </div>
-                <div class="glass-card animate-on-scroll">
-                    <div class="skill-category-title"><i class="fas fa-server"></i> Backend</div>
-                    <div class="skill-list">
-                        <span class="skill-badge">Python (Flask)</span><span class="skill-badge">Node.js</span>
-                        <span class="skill-badge">PostgreSQL</span><span class="skill-badge">REST APIs</span>
+
+                <!-- Frameworks -->
+                <div class="skills-category animate-on-scroll">
+                    <h3><i class="fas fa-layer-group"></i> Frameworks & Bibliotecas</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Flask</span><span>88%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="88"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>React</span><span>70%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="70"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Node.js</span><span>75%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="75"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Bootstrap/React</span><span>85%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
                     </div>
                 </div>
-                <div class="glass-card animate-on-scroll">
-                    <div class="skill-category-title"><i class="fas fa-robot"></i> Automation</div>
-                    <div class="skill-list">
-                        <span class="skill-badge">N8N Pro</span><span class="skill-badge">Docker</span>
-                        <span class="skill-badge">Git/GitHub</span><span class="skill-badge">CI/CD</span>
+
+                <!-- Ferramentas -->
+                <div class="skills-category animate-on-scroll">
+                    <h3><i class="fas fa-tools"></i> Ferramentas & DevOps</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Git/GitHub</span><span>90%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
                     </div>
-                </div>
-                <div class="glass-card animate-on-scroll">
-                    <div class="skill-category-title"><i class="fas fa-tools"></i> Infra</div>
-                    <div class="skill-list">
-                        <span class="skill-badge">Suporte N2</span><span class="skill-badge">Redes</span>
-                        <span class="skill-badge">Linux Admin</span>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Docker</span><span>80%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="65"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Linux</span><span>85%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="85"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>PostgreSQL/MySQL</span><span>80%</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-progress" data-width="80"></div></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
+    <!-- ========== PORTFÓLIO ========== -->
     <section class="section" id="portfolio">
         <div class="container">
-            <h2 class="section-title animate-on-scroll"><span class="section-number">05.</span> Portfólio</h2>
+            <h2 class="section-title animate-on-scroll">
+                <span class="section-number">05.</span> Portfólio
+            </h2>
             <div class="portfolio-grid">
-                <div class="glass-card portfolio-card animate-on-scroll">
-                    <div class="portfolio-image-box"><i class="fas fa-hamburger"></i>
-                        <div class="portfolio-overlay"><a href="https://github.com/7sgn/DevBurger" target="_blank" class="portfolio-link-circle"><i class="fab fa-github"></i></a></div>
+                <!-- Projeto 1: DevBurger -->
+                <div class="portfolio-card animate-on-scroll">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <i class="fas fa-hamburger"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-links">
+                                <a href="https://github.com/7sgn/DevBurger" target="_blank" class="portfolio-link" title="Ver Código">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="portfolio-info-box">
-                        <h3>DevBurger</h3>
-                        <p>Plataforma end-to-end para hamburguerias com Node.js e React.</p>
-                        <div class="portfolio-stack"><span class="tag">Node.js</span><span class="tag">Postgre</span></div>
+                    <div class="portfolio-info">
+                        <h3><a href="https://github.com/7sgn/DevBurger" target="_blank" style="color: inherit;">DevBurger</a></h3>
+                        <p>Plataforma completa de hamburgueria com Node.js e React. Gerenciamento de pedidos e integração com PostgreSQL e MongoDB.</p>
+                        <div class="portfolio-tags">
+                            <span>Node.js</span>
+                            <span>React</span>
+                            <span>PostgreSQL</span>
+                            <span>MongoDB</span>
+                        </div>
                     </div>
                 </div>
-                <div class="glass-card portfolio-card animate-on-scroll">
-                    <div class="portfolio-image-box"><i class="fab fa-python"></i>
-                        <div class="portfolio-overlay"><a href="https://github.com/7sgn/-100-EXERCICIOS-EM-PYTHON" target="_blank" class="portfolio-link-circle"><i class="fas fa-code"></i></a></div>
+
+                <!-- Projeto 2: 100 Exercícios -->
+                <div class="portfolio-card animate-on-scroll">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-links">
+                                <a href="https://github.com/7sgn/-100-EXERCICIOS-EM-PYTHON" target="_blank" class="portfolio-link" title="Teste suas Skills">
+                                    <i class="fas fa-code"></i>
+                                </a>
+                                <a href="https://github.com/7sgn/-100-EXERCICIOS-EM-PYTHON" target="_blank" class="portfolio-link" title="Ver GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="portfolio-info-box">
-                        <h3>Python Training</h3>
-                        <p>Biblioteca com 100+ desafios técnicos de algoritmos e lógica.</p>
-                        <div class="portfolio-stack"><span class="tag">Python</span><span class="tag">Logic</span></div>
+                    <div class="portfolio-info">
+                        <h3><a href="https://github.com/7sgn/-100-EXERCICIOS-EM-PYTHON" target="_blank" style="color: inherit;">100+ Exercícios em Python</a></h3>
+                        <p>Biblioteca interativa para quem está iniciando. Teste suas skills com desafios que cobrem desde lógica básica até estruturas complexas.</p>
+                        <div class="portfolio-tags">
+                            <span>Python</span>
+                            <span>Logic</span>
+                            <span>Education</span>
+                        </div>
                     </div>
                 </div>
-                <div class="glass-card portfolio-card animate-on-scroll">
-                    <div class="portfolio-image-box"><i class="fas fa-rocket"></i>
-                        <div class="portfolio-overlay"><a href="https://www.settetechpy.com.br/" target="_blank" class="portfolio-link-circle"><i class="fas fa-external-link-alt"></i></a></div>
+
+                <!-- Projeto 3: SetteTechPY -->
+                <div class="portfolio-card animate-on-scroll">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-links">
+                                <a href="https://www.settetechpy.com.br/" target="_blank" class="portfolio-link" title="Ver Site">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="portfolio-info-box">
-                        <h3>SetteTechPY</h3>
-                        <p>Site institucional da minha empresa de consultoria tecnológica.</p>
-                        <div class="portfolio-stack"><span class="tag">Business</span><span class="tag">Next.js</span></div>
+                    <div class="portfolio-info">
+                        <h3><a href="https://www.settetechpy.com.br/" target="_blank" style="color: inherit;">SetteTechPY</a></h3>
+                        <p>Site oficial da minha empresa no DF. Soluções tecnológicas modernas, consultoria e desenvolvimento especializado.</p>
+                        <div class="portfolio-tags">
+                            <span>Business</span>
+                            <span>Web Design</span>
+                            <span>DF-Tech</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- ========== CONTATO ========== -->
     <section class="section section-alt" id="contato">
         <div class="container">
-            <h2 class="section-title animate-on-scroll"><span class="section-number">06.</span> Contato Direto</h2>
-            <div class="contact-card-main animate-on-scroll">
-                <div class="glass-card contato-info-card">
+            <h2 class="section-title animate-on-scroll">
+                <span class="section-number">06.</span> Contato
+            </h2>
+            <div class="contato-container animate-on-scroll">
+                <div class="contato-info-card">
                     <div class="contato-header">
-                        <h3>Vamos elevar seu próximo projeto?</h3>
-                        <p>Escolha um dos canais abaixo e vamos conversar.</p>
+                        <h3>Vamos conversar?</h3>
+                        <p>Estou disponível para novos projetos e oportunidades profissionais.</p>
                     </div>
-                    <div class="contato-methods-grid">
-                        <a href="mailto:sette562@gmail.com" class="contact-item-card">
-                            <div class="contact-icon-box"><i class="fas fa-envelope"></i></div>
-                            <div class="contact-text-box"><strong>E-mail</strong><span>sette562@gmail.com</span></div>
+                    
+                    <div class="contato-methods">
+                        <a href="mailto:sette562@gmail.com" class="contato-method-item">
+                            <div class="icon-box">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="text-box">
+                                <strong>E-mail</strong>
+                                <span>sette562@gmail.com</span>
+                            </div>
                         </a>
-                        <a href="https://wa.me/5561983588952" target="_blank" class="contact-item-card">
-                            <div class="contact-icon-box"><i class="fab fa-whatsapp"></i></div>
-                            <div class="text-box"><strong>WhatsApp</strong><span>+55 (61) 9 8358-8952</span></div>
+
+                        <a href="https://wa.me/5561983588952" target="_blank" class="contato-method-item">
+                            <div class="icon-box">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="text-box">
+                                <strong>WhatsApp</strong>
+                                <span>+55 (61) 9 8358-8952</span>
+                            </div>
                         </a>
+
+                        <div class="contato-method-item">
+                            <div class="icon-box">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="text-box">
+                                <strong>Localização</strong>
+                                <span>Brasília, DF - Brasil</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="social-footer">
-                        <div class="social-buttons-row">
-                            <a href="https://www.linkedin.com/in/marlon-sette/" target="_blank" class="social-btn-circle"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://github.com/7sgn" target="_blank" class="social-btn-circle"><i class="fab fa-github"></i></a>
-                            <a href="https://www.instagram.com/marlon_sette/" target="_blank" class="social-btn-circle"><i class="fab fa-instagram"></i></a>
+
+                    <div class="social-links-container">
+                        <p>Siga-me nas redes sociais:</p>
+                        <div class="social-links-grid">
+                            <a href="https://www.linkedin.com/in/marlon-sette/" target="_blank" class="social-btn" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/7sgn" target="_blank" class="social-btn" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.instagram.com/marlon_sette/" target="_blank" class="social-btn" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -302,15 +583,31 @@
 
     </main>
 
-    <footer class="footer no-print">
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Marlon Sette. Todos os direitos reservados.</p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>Marlon Sette<span class="logo-bracket">/&gt;</span>
+                </div>
+                <p class="footer-text">
+                    Desenvolvido com <i class="fas fa-heart" style="color: var(--accent);"></i> e Flask
+                </p>
+                <p class="footer-copyright">
+                    &copy; 2026 Marlon Sette. Todos os direitos reservados.
+                </p>
+            </div>
         </div>
     </footer>
 
-    <button class="btn-top" id="btn-top"><i class="fas fa-arrow-up"></i></button>
+    <!-- Botão voltar ao topo -->
+    <button class="btn-top" id="btn-top" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
+    <!-- html2pdf.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Custom JS -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>
